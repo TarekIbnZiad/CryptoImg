@@ -1,0 +1,20 @@
+OBJDIRS     += math
+
+MATHSRC   :=  math_util.cc num_th_alg.cc prime_seq.cc
+MATHOBJ   := $(patsubst %.cc,$(OBJDIR)/math/%.o,$(MATHSRC))
+
+all:    $(OBJDIR)/libmath.so
+$(OBJDIR)/libmath.so: $(MATHOBJ)
+	$(CXX) -shared -o $@ $(MATHOBJ) $(LDFLAGS) -lgmpxx -lgmp
+
+all:    $(OBJDIR)/math/test_algo
+$(OBJDIR)/math/test_algo: $(OBJDIR)/math/test_algo.o $(OBJDIR)/libmath.so
+	$(CXX) $< -o $@ $(LDFLAGS) -lmath -lntl
+
+install: install_math
+
+.PHONY: install_math
+install_math: $(OBJDIR)/libmath.so
+	install -m 644 $(OBJDIR)/libmath.so /usr/lib
+
+# vim: set noexpandtab:
