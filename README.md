@@ -14,7 +14,7 @@ coming soon.
 
 ## Citing our work
 
-If you use our tool in an academic work, please cite our [paper](https://arxiv.org/pdf/1609.00881.pdf):
+Our Paper [paper](https://arxiv.org/pdf/1609.00881.pdf) Bibtex is as follows:
 
 ```
 @inproceedings{ziad2016CryptoImg, 
